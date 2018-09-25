@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register Now</title>
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<script language="JavaScript">
+		var specialChar = "0123456789`-=[];',./~!@#$%^&*()_+{}:<>?|12"
+		var numSet = "0123654789"
+		function hide()
+		{
+			document.getElementById("NameError1").hidden = 'hidden';
+			document.getElementById("NameError2").hidden = 'hidden';
+			document.getElementById("DateError").hidden = 'hidden';
+			document.getElementById("PhotoError").hidden = 'hidden';
+			document.getElementById("GenderError").hidden = 'hidden';
+			document.getElementById("EmailError").hidden = 'hidden';
+			document.getElementById("CountryError").hidden = 'hidden';
+			document.getElementById("AddressError").hidden = 'hidden';
+			document.getElementById("PincodeError").hidden = 'hidden';
+			document.getElementById("PhoneError").hidden = 'hidden';
+			document.getElementById("TermsError").hidden = 'hidden';
+		}
+
+		function validateForm()
+		{
+			var flag = 0;
+			hide();
+			//validate name
+			var fname = document.f1.firstname.value;
+			var mname = document.f1.middlename.value;
+			var lname = document.f1.lastname.value;
+			var fullname = fname + mname + lname;
+			if(fname=='' || mname=='' || lname=='')
+			{
+				hide();
+				document.getElementById("NameError1").hidden = '';
+				flag = 1;
+			}
+			if(fullname != '')
+			{
+				for(var i =0;i<fullname.length;i++)
+					for(var j=0;j<specialChar.length;j++)
+					{
+						if(fullname.charAt(i)==specialChar.charAt(j))
+						{
+							flag=1;
+							hide();
+							document.getElementById("NameError2").hidden = '';
+							break;
+						}
+					}
+			}
+			//validate date
+			if(flag != 1 && document.f1.dob.value =='')
+			{
+				flag = 1;
+				hide();
+				document.getElementById("DateError").hidden = '';
+			}
+			//file upload
+			var inp = document.getElementById("photo");
+			if(flag != 1 && inp.files.length<1)
+			{
+				flag=1;
+				hide();
+				document.getElementById("PhotoError").hidden = '';
+			}
+			//Email
+			var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			var str = document.getElementById("email").value;
+			if(flag != 1)
+			{
+				if(pattern.test(str))
+					flag = 0;
+				else
+				{
+					flag = 1;
+					hide();
+					document.getElementById("EmailError").hidden = '';
+				}
+			}
+			
+			//Country
+			if(flag !=1 && document.getElementById("country").value == '')
+			{
+				flag = 1;
+				hide();
+				document.getElementById("CountryError").hidden = '';
+			}
+
+			//Address
+			if(flag != 1 && document.getElementById("address").value == '')
+			{
+				flag = 1;
+				hide();
+				document.getElementById("AddressError").hidden = '';
+			}
+
+			//Pin Code
+			if(flag!=1 && document.getElementById("pincode").value == '')
+			{
+				flag = 1;
+				hide();
+				document.getElementById("PincodeError").hidden = '';
+			}
+
+			//Phone Number
+			var reg =/^(\+\d{1,3}[- ]?)?\d{10}$/
+			if(flag != 1)
+			{
+				if(reg.test(document.getElementById("pnumber").value))
+					flag = 0
+				else
+				{
+					flag = 1;
+					hide();
+					document.getElementById("PhoneError").hidden = '';
+				}
+			}
+
+
+			
+			if(flag==1)
+				{alert("see the error");}
+		}
+	</script>
+</head>
+<body class="body1" background="3d.jpg" onload="hide()">
+	<header class="top">
+		<center><strong><h1>Welcome</h1></strong></center><hr>
+		<!--NAVIGATION BAR-->
+		<nav>
+			<table class="navBar" width="100%">
+			<tr>
+				<td class="links" width="20%">
+					<label ><a class="navigation" href="home.html">Home</a></label>
+				</td>
+				<td class="links" width="20%">
+					<label><a class="navigation" href="desktop.html">Desktop</a></label>
+				</td>
+				<td class="links" width="20%">
+					<label><a class="navigation" href="laptop.html">Laptop</a></label>
+				</td>
+				<td class="links" width="20%">
+					<label><a class="navigation" href="parts.html">Parts</a></label>
+				</td>
+				<td class="links" width="20%">
+					<label><a class="navigation" href="register.html">Register</a></label>
+				</td>
+			</tr>
+			</table>
+		</nav>
+	</header><hr>
+	<label><h3>Fill up your details</h3></label>
+	<form name="f1">
+		<table class="details" width = "100%">
+			<!--NAME-->
+			<tr>
+				<td class="label" width = "20%">
+					<label>Name:</label>
+				</td>
+				<td>
+					<input type = "text" name = "firstname" autofocus placeholder="First Name" maxlength="15" required>
+					<input type = "text" name = "middlename" placeholder="Middle Name" maxlength="15" required>
+					<input type = "text" name = "lastname" placeholder="Last Name" maxlength="15" required>
+					<label id="NameError1" class="hidden">Cannot be empty!!</label>
+					<label id="NameError2" class="hidden">Alphabets only!!</label>
+				</td>
+			</tr>
+			<!--DATE OF BIRTH-->
+			<tr>
+				<td class="label" width = "20%">
+					<label>Date of Birth:</label>
+				</td>
+				<td>
+					<input type="date" name="dob">
+					<label id="DateError" class="hidden">Enter the date!!</label>
+				</td>
+			</tr>
+			<!--PHOTO-->
+			<tr>
+				<td class="label">
+					<label>Upload your photo:</label>
+				</td>
+				<td>
+					<input type="file" id="photo" name="photo" accept="jpeg, png">
+					<label id="PhotoError" class="hidden">Please choose a file!!</label>
+				</td>
+			</tr>
+			<!--GENDER-->
+			<tr>
+				<td class="label" width = "20%">
+					<label>Gender:</label>
+				</td>
+				<td>
+					<input type="radio" name="gender" value = "Male">
+					<label>Male</label>
+					<input type="radio" name="gender" value = "Female">
+					<label>Female</label>
+					<input type="radio" name="gender" value = "Other" checked>
+					<label>Other</label>
+					<label id="GenderError" class="hidden">Please select an option!!</label>
+				</td>
+			</tr>
+			<!--EMAIL-->
+			<tr>
+				<td class="label" width="20%">
+					<label>E-mail:</label>
+				</td>
+				<td>
+					<input type="email" id="email" name="email" size = "35" placeholder="Enter your Email Address">
+					<label id="EmailError" class="hidden">Enter a correct E-mail!!</label>
+				</td>
+			</tr>
+			<!--COUNTRY-->
+			<tr>
+				<td class="label" width = "20%">
+					<label>Country:</label>
+				</td>
+				<td>
+					<input type="text" id="country" placeholder="Enter your Country">
+					<label id="CountryError" class="hidden">Enter your country!!</label>
+				</td>
+			</tr>
+			<!--ADDRESS-->
+			<tr >
+				<td class="label" width="20%">
+					<label>Address:</label>
+				</td>
+				<td width="80%">
+					<textarea id="address" rows="5"></textarea>
+					<label id="AddressError" class="hidden">Enter the address!!</label>
+				</td>
+			</tr>
+			<!--PIN CODE-->
+			<tr>
+				<td class="label" width="20%">
+					<label>PIN code:</label>
+				</td>
+				<td width="20%">
+					<input type="number" id="pincode" placeholder="Enter PIN code">
+					<label id="PincodeError" class="hidden">Enter correct pincode!!</label>
+				</td>
+			</tr>
+			<!--PHONE NUMBER-->
+			<tr>
+				<td class="label" width="20%">
+					<label>Phone Number:</label>
+				</td>
+				<td width="30%">
+					<input type="number" id="pnumber" placeholder="Enter phone number">
+					<label id="PhoneError" class="hidden">Enter correct phone number!!</label>
+				</td>
+			</tr>
+			<!--EXPERIENCE-->
+			<tr>
+				<td class="label" width="20%">
+					<label>Give your experience:</label>
+				</td>
+				<td>
+					<input type="range" name="experience" min="1" maxlength="10">
+				</td>
+			</tr>
+
+		</table><hr>
+		<!--Terms and Conditions-->
+		<input type="checkbox" name="tnc">
+		<label class="cb">I accept all terms and conditions of website before registering</label><br>
+		<!--SUBMIT-->
+		<label id="TermsError" class="hidden">Please accept terms and conditions.</label>
+		<input class="bttn" type="button" value="Submit" onclick="validateForm()"  formmethod="post">
+	</form><br><hr>
+	<aside>
+		<input type="image" class="add" src="ad.jpg" name="advertise">
+	</aside>
+	<footer class="fttr"><hr>
+		<p>
+			All products mentioned on this site have affiliate links to trusted e-commerce. <br>
+			Contact information:<a href="mailto:chiragw34@gmail.com">chiragw34@gmail.com</a>.
+		</p>
+	</footer>
+</body>
+</html>

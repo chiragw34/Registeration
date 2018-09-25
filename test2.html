@@ -1,0 +1,295 @@
+<html>
+ <head>
+ <title>
+       LIC propoasal form
+    </title>
+</head>
+<script type="text/javascript">
+    var splcharset="~`!@#$%^&*()_-+={[}]|\:;'<,>.?/";
+    var numset="0123456789"
+    var flag=0,mobflag=0,eflg=0,sflg=0,scharflg=0,fnflg=0,lnflg=0,mnflg=0,dobflg=0;
+    var dt=new Date();
+    function fnamevalidate()
+    {
+  document.f1.FN.value=document.f1.FN.value.charAt(0).toUpperCase()+document.f1.FN.value.substr(1,document.f1.FN.value.length);
+        fnflg=0;scharflg=0;
+        if(document.f1.FN.value==""){
+            alert("Please enter your first name!!");
+            fnflg=1;
+        }
+    for(i=0;i<document.f1.FN.value.length;i++){
+        if(numset.indexOf(document.f1.FN.value.charAt(i))!=-1)
+            {fnflg=1;}
+        if(splcharset.indexOf(document.f1.FN.value.charAt(i))!=-1)
+            {scharflg=1;}
+ }
+        if(fnflg!=0){
+            alert("You cannot enter numeric values in first name field");
+        }
+        if(scharflg!=0)
+            {
+                alert("You cannot enter special charcters in first name field");
+            }
+}
+    function mnamevalidate()
+    {
+        document.f1.MN.value=document.f1.MN.value.charAt(0).toUpperCase()+document.f1.MN.value.substr(1,document.f1.MN.value.length);
+        mnflg=0;scharflg=0;
+        if(document.f1.MN.value==""){
+            alert("Please enter your middle name!!");
+            mnflg=1;
+        }
+    for(i=0;i<document.f1.MN.value.length;i++){
+        if(numset.indexOf(document.f1.MN.value.charAt(i))!=-1)
+            {mnflg=1;}
+        if(splcharset.indexOf(document.f1.MN.value.charAt(i))!=-1)
+            {scharflg=1;}
+   }
+        if(mnflg!=0){
+            alert("You cannot enter numeric values in middle name field");
+        }
+        if(scharflg!=0)
+            {
+                alert("You cannot enter special charcters in middle name field");
+            } }
+    function lnamevalidate()
+{
+        document.f1.LN.value=document.f1.LN.value.charAt(0).toUpperCase()+document.f1.LN.value.substr(1,document.f1.LN.value.length);
+        lnflg=0;
+        if(document.f1.LN.value==""){
+            alert("Please enter your last name!!");
+            lnflg=1;
+        }
+    for(i=0;i<document.f1.LN.value.length;i++){
+        if(numset.indexOf(document.f1.LN.value.charAt(i))!=-1)
+            {lnflg=1;}
+        if(splcharset.indexOf(document.f1.LN.value.charAt(i))!=-1)
+            {scharflg=1;}
+}
+        if(lnflg!=0){
+            alert("You cannot enter numeric values in last name field");
+        }
+        if(scharflg!=0)
+            {
+                alert("You cannot enter special charcters in last name field");
+            }
+}
+    function mobvalidate()
+    {
+        var numbers=/^[0-9]+$/;
+        if(document.f1.no.value.match(numbers))
+            {
+                mobflag=0;
+            }
+        else{
+            alert("Please input numeric charcters only!!");
+            mobflag=1;
+}
+   }
+    function emailvalidate()
+    {
+        eflg=0;
+        var mailformat=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(document.f1.email.value.match(mailformat)){
+            eflg=0;
+        }
+        else{
+            alert("You have entered an invalid email address");
+            eflg=1;
+        }
+ }
+    function display()
+  {
+        fnamevalidate();
+        mnamevalidate();
+        lnamevalidate();
+        mobvalidate();
+        emailvalidate();
+    }
+</script>
+<body>
+  <h1>LIC Proposal Form</h1>
+  <p>Please fill out this form to save for better future!!</p>
+  <fieldset>
+  <legend>PERSONAL DETAILS</legend>
+  <form name="f1" method="post" autocomplete="on">
+   <p><label>First name:
+   <input type="text" name="FN" value=" " placeholder="Enter First Name" autofocus="on" onchange="fnamevalidate()">
+   </label>&nbsp &nbsp
+   <label>Middle name:
+   <input type="text" name="MN" value=" " placeholder="Enter Middle Name"autofocus="on" onchange="mnamevalidate()">
+   </label>&nbsp &nbsp
+    <label>Last name:
+   <input type="text" name="LN" value=" " placeholder="Enter Last Name"autofocus="on" onchange="lnamevalidate()">
+   </label>&nbsp &nbsp
+   </p>
+   <p><label>Gender:</label>
+   <input  name="a" type="radio" value="Male" checked>
+   <label>Male</label>&nbsp &nbsp
+   <input  name="a" type="radio" value="Female">
+   <label>Female</label>&nbsp &nbsp
+   <input  name="a" type="radio" value="Other">
+   <label>Other</label>&nbsp &nbsp
+  </p>
+  <p>
+  <label>E-mail Address:
+   <input type="e-mail" name="email" value="" placeholder="Enter e-mail" onchange="emailvalidate()">
+   </label>
+  </p>
+  <p>
+    <label>Residential Address:<br>
+       <textarea name="text area" cols="35" rows="5"></textarea>
+     </label>
+  </p>
+ <p> <label>Date of Birth:
+   <input type="date" name="bday" value="">
+ </label>
+ </p>
+  <p><label>Age:
+   <input name="text" type="number">
+   </label>
+  </p>
+  <p> <label>Mobile Number:
+   <input name="no" type="text" value="" onchange="mobvalidate()">
+   </label>
+  </p>
+  <p> <label>Place of birth:
+   <input name="text 1" type="text">
+   </label>
+  </p>
+ <p> <label>Qualification:
+   <input name="text 1" type="text">
+   </label>
+  </p>
+<p><input type="file" name="pic" accept="image/*">
+  <input type="submit">
+  </p>
+<p>
+<label>Color:</label>
+<input type="color" name="color"></p>
+<p>
+<label>Range:</label>
+ <input type="range" min="1" max="100" value="50" class="slider" id="myRange"></p>
+</fieldset>
+<fieldset>
+<legend>INCOME DETAILS</legend>
+    <p>
+  <label>Occupation:
+   <input type="text" name="occupation">
+   </label>
+  </p>
+  <p>
+  <label>Exact Nature Of Duties?:<label>
+    <input  name="b" type="radio" value="Business" checked>
+   <label>Business</label>&nbsp &nbsp
+   <input  name="b" type="radio" value="Service">
+   <label>Service</label>&nbsp &nbsp
+   <input  name="b" type="radio" value="Self-Employed">
+   <label>Self-Employed</label>&nbsp &nbsp
+   
+   </label>
+</p>
+<p> <label>Annual Income:
+  <input type="text" name="annual income">
+  </label>
+</p>
+<p> <label>Source Of Income:
+  <input type="text" name="source of income">
+  </label>
+</p>
+<p> <label>Are You Tax Payer?:</label>
+  <input  name="c" type="radio" value="Yes" checked>
+   <label>Yes</label>&nbsp &nbsp
+   <input  name="c" type="radio" value="No">
+   <label>No</label>&nbsp &nbsp
+</p>
+</fieldset>
+<fieldset>
+ <legend>FAMILY DETAILS</legend>
+ <p><label>Father's Age:
+  <input type="number" name="number">&nbsp &nbsp</label>
+  <label>State Of Health:
+  <input type="text" name="health">&nbsp &nbsp</label>
+   <label>Cause Of Death:
+  <input type="text" name="number">&nbsp &nbsp</label>
+  <label>Age at Death:
+  <input type="number" name="number">
+  </label>
+</p>
+ <p>  <label>Mother's Age:
+  <input type="number" name="number">
+</label>
+ <label>State Of Health: <input type="text" name="health">&nbsp &nbsp</label>
+   <label>Cause Of Death:
+  <input type="text" name="number">&nbsp &nbsp</label>
+  <label>Age at Death:
+  <input type="number" name="number">
+  </label>
+</p>
+ <p> <label>Brother's Age:
+  <input type="number" name="number">
+</label>
+ <label>State Of Health:
+  <input type="text" name="health">&nbsp &nbsp</label>
+   <label>Cause Of Death:
+  <input type="text" name="number">&nbsp &nbsp</label>
+  <label>Age at Death:
+  <input type="number" name="number">
+  </label>
+</p>
+ <p><label>Sister's Age:
+  <input type="number" name="number">
+</label>
+ <label>State Of Health:
+  <input type="text" name="health">&nbsp &nbsp</label>
+   <label>Cause Of Death:
+  <input type="text" name="number">&nbsp &nbsp</label>
+  <label>Age at Death:
+  <input type="number" name="number">
+  </label>
+</p>
+ <p> <label>Husband's/Wife's Age:
+  <input type="number" name="number">
+</label>
+ <label>State Of Health:
+  <input type="text" name="health">&nbsp &nbsp</label>
+   <label>Cause Of Death:
+  <input type="text" name="number">&nbsp &nbsp</label>
+  <label>Age at Death:
+  <input type="number" name="number">
+  </label>
+</p>
+<p> <label>Number Of Children:
+   <input type="number" name="children">
+</label>
+</p>
+</fieldset>
+<fieldset>
+ <legend>NOMINEE DETAILS</legend>
+<p>
+ <label>Nominee Name:
+ <input type="text" name="name">
+ </label>
+</p>
+<p>
+ <label>Nominee Age:
+ <input type="number" name="name">
+ </label>
+</p>
+<p> <label>Relationship:
+ <select name="relationship">
+ <option selected>Father</option>
+ <option>Mother</option>
+ <option>Brother</option>
+ <option>Sister</option>
+ <option>Children</option>
+ </select>
+ </label>
+</p>
+</fieldset><br>
+<p align="center">
+  <input type="submit" value="Submit" onclick="display()">
+</p>
+</form>
+</body>
+</html>

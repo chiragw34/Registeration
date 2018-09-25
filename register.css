@@ -1,0 +1,62 @@
+body{
+	color:black;
+}
+.hidden{
+	color: red;
+}
+
+label{
+	font-family:"Times New Roman",Times,serif; 
+	text-transform: capitalize;
+	text-align: center;
+}
+.navBar{
+	text-align: center;
+	font-size: 20px;
+	background-color: blue;
+
+}
+td.links{
+	padding: 2px 18px;
+	border: 3px solid;
+	background-color: black;
+	color: red;
+	
+}
+a:link,a:visited{
+	color: gray;
+	text-decoration: none;
+}
+td.label{
+	text-align: left;
+	font-weight: bold;
+}
+.bttn{
+	float: right;
+}
+h1{
+	font-size: 50px;
+	font-weight: bold;
+	text-decoration: underline;
+	letter-spacing: 5px;
+	font-family:"Times New Roman",Times,serif;
+	text-align: center;
+	border: 2px solid;
+}
+h3{
+	text-decoration: underline;
+	text-align: center;
+	font-size: 20px
+}
+.body1{
+	background-image: url("3d.jpg");
+}
+.cb{
+	font-style: italic;
+}
+.add{
+	padding-left: 700px;
+}
+.fttr{
+	text-align: center;
+}
